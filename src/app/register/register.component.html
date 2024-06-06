@@ -1,0 +1,49 @@
+
+  <div class="container">
+    <form class="my-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">UserName</label>
+        </div>
+        <div class="col-75">
+          <input class="form-control"  formControlName="username" name="username" type="text" 
+          name="username" id="username" placeholder="Enter Username Here" required />
+        </div>
+        <div *ngIf="registerForm.controls['username'].invalid &&  ( registerForm.controls['username'].dirty ||
+        registerForm.controls['username'].touched)">
+          <span class="form-floating"  style="color:  rgb(244, 10, 10)" >Please Enter Username Between 8 to 16 Characters!</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Email</label>
+        </div>
+
+        <div class="col-75">
+          <input class="form-control"    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+          formControlName="email" name="email" type="text" name="email" id="email" placeholder="email@gmail.com" required />
+        
+        
+        </div>
+             <div
+        *ngIf="
+        registerForm.controls['email'].invalid && (
+          registerForm.controls['email'].dirty ||
+          registerForm.controls['email'].touched)
+        "
+        
+      >
+      <span class="form-floating"  style="color: rgb(244, 10, 10);"  >Please Enter Valid Email!</span>
+        
+      </div>
+
+        
+      </div>
+    
+
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
